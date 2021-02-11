@@ -7,12 +7,15 @@ const morgan = require('morgan');
 const app = express();
 // init config
 dotenv.config({ path: './config/config.env' });
+// init routes
+const transactions = require('./routes/transactions');
 
 // setup port
 const PORT = process.env.PORT || 5000;
 
-// app get response from Server
-app.get('/', (req, res) => res.send('Hello Yu'));
+// mount routes and set the endpoint
+app.use('/api/v1/transactions', transactions);
+
 // server listen to requiest
 app.listen(
   PORT,
