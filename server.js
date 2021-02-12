@@ -9,6 +9,9 @@ const app = express();
 dotenv.config({ path: './config/config.env' });
 // init routes
 const transactions = require('./routes/transactions');
+// init db
+const connectDB = require('./config/db');
+connectDB();
 
 // setup port
 const PORT = process.env.PORT || 5000;

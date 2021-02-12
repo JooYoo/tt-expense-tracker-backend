@@ -8,7 +8,7 @@ const getTransactions = (req, res, next) => {
 // @desc   add transactions
 // @route  POST /api/v1/transactions
 // @access Public
-const addTransactions = (req, res, next) => {
+const addTransaction = (req, res, next) => {
   res.send('POST transactions');
 };
 
@@ -21,6 +21,6 @@ const deleteTransaction = (req, res, next) => {
 
 module.exports = {
   getTransactions,
-  addTransactions,
+  addTransaction,
   deleteTransaction,
 };
