@@ -16,6 +16,9 @@ connectDB();
 // setup port
 const PORT = process.env.PORT || 5000;
 
+// available bodyParser to allow add new data
+app.use(express.json());
+
 // mount routes and set the endpoint
 app.use('/api/v1/transactions', transactions);
 

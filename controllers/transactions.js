@@ -23,8 +23,33 @@ const getTransactions = async (req, res, next) => {
 // @desc   add transactions
 // @route  POST /api/v1/transactions
 // @access Public
-const addTransaction = (req, res, next) => {
-  res.send('POST transactions');
+const addTransaction = async (req, res, next) => {
+  try {
+    // destructuring the request data
+    const { text, amount } = req.body;
+
+    const transaction = await Transaction.create(req.body);
+
+    return res.status(201).json({
+      success: true,
+      data: transaction,
+    });
+  } catch (err) {
+    if (err.name === 'ValidationError') {
+      // the error message defined in model
+      const messages = Object.values(err.errors).map((val) => val.message);
+
+      return res.status(400).json({
+        success: false,
+        error: messages,
+      });
+    } else {
+      return res.status(500).json({
+        success: false,
+        error: 'Sever Error',
+      });
+    }
+  }
 };
 
 // @desc   delete transactions
