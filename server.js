@@ -2,6 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const colors = require('colors');
 const morgan = require('morgan');
+const path = require('path');
 
 // init express
 const app = express();
@@ -21,6 +22,17 @@ app.use(express.json());
 
 // mount routes and set the endpoint
 app.use('/api/v1/transactions', transactions);
+
+// when server start also load client build result
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('../client/build'));
+
+  app.get('*', (req, res) => {
+    res.sendFile(
+      path.resolve(__dirname, '../', 'client', 'build', 'index.html'),
+    );
+  });
+}
 
 // server listen to requiest
 app.listen(
