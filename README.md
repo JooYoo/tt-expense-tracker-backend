@@ -1,4 +1,5 @@
 ## [ Tutorial Note ] Node Expense Tracker Frontend
+### 🥾 MAIN STEPS
 * 🔗 [01. install dependences](https://github.com/JooYoo/tt-expense-tracker-backend/tree/01_install_dependences)
 * 🔗 [02. setup express](https://github.com/JooYoo/tt-expense-tracker-backend/tree/02_setup_express)
 * 🔗 [03. create basic routes](https://github.com/JooYoo/tt-expense-tracker-backend/tree/03_create_basic_routes)
